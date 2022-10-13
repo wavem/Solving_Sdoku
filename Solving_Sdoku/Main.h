@@ -80,6 +80,10 @@ __published:	// IDE-managed Components
 private:	// User declarations
 public:		// User declarations
 	__fastcall TFormMain(TComponent* Owner);
+
+public: // START
+	void __fastcall InitProgram();
+    void __fastcall PrintMsg();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TFormMain *FormMain;

@@ -73,5 +73,16 @@ TFormMain *FormMain;
 __fastcall TFormMain::TFormMain(TComponent* Owner)
 	: TForm(Owner)
 {
+	InitProgram();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::InitProgram() {
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::PrintMsg() {
+
 }
 //---------------------------------------------------------------------------
