@@ -67,6 +67,10 @@
 #pragma link "dxSkinVS2010"
 #pragma link "dxSkinWhiteprint"
 #pragma link "dxSkinXmas2008Blue"
+#pragma link "cxContainer"
+#pragma link "cxEdit"
+#pragma link "cxMemo"
+#pragma link "cxTextEdit"
 #pragma resource "*.dfm"
 TFormMain *FormMain;
 //---------------------------------------------------------------------------
@@ -79,10 +83,11 @@ __fastcall TFormMain::TFormMain(TComponent* Owner)
 
 void __fastcall TFormMain::InitProgram() {
 
+	PrintMsg(L"Init Complete");
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormMain::PrintMsg() {
-
+void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
+	memo->Lines->Add(_str);
 }
 //---------------------------------------------------------------------------

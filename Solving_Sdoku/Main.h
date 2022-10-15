@@ -69,6 +69,10 @@
 #include "dxSkinWhiteprint.hpp"
 #include "dxSkinXmas2008Blue.hpp"
 #include <Vcl.ExtCtrls.hpp>
+#include "cxContainer.hpp"
+#include "cxEdit.hpp"
+#include "cxMemo.hpp"
+#include "cxTextEdit.hpp"
 //---------------------------------------------------------------------------
 class TFormMain : public TForm
 {
@@ -77,13 +81,14 @@ __published:	// IDE-managed Components
 	TdxRibbonTab *MainRibbonMenuTab1;
 	TdxRibbon *MainRibbonMenu;
 	TdxBarManager *BarMgr;
+	TcxMemo *memo;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TFormMain(TComponent* Owner);
 
 public: // START
 	void __fastcall InitProgram();
-    void __fastcall PrintMsg();
+    void __fastcall PrintMsg(UnicodeString _str);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TFormMain *FormMain;

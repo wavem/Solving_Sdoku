@@ -30,6 +30,14 @@ object FormMain: TFormMain
     ExplicitTop = 192
     ExplicitWidth = 185
     ExplicitHeight = 41
+    object memo: TcxMemo
+      Left = 480
+      Top = 0
+      Align = alRight
+      TabOrder = 0
+      Height = 436
+      Width = 317
+    end
   end
   object MainRibbonMenu: TdxRibbon
     Left = 0
