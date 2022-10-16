@@ -73,6 +73,10 @@
 #include "cxEdit.hpp"
 #include "cxMemo.hpp"
 #include "cxTextEdit.hpp"
+#include "AdvGrid.hpp"
+#include "AdvObj.hpp"
+#include "BaseGrid.hpp"
+#include <Vcl.Grids.hpp>
 //---------------------------------------------------------------------------
 class TFormMain : public TForm
 {
@@ -82,6 +86,7 @@ __published:	// IDE-managed Components
 	TdxRibbon *MainRibbonMenu;
 	TdxBarManager *BarMgr;
 	TcxMemo *memo;
+	TAdvStringGrid *AdvStringGrid1;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TFormMain(TComponent* Owner);

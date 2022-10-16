@@ -71,6 +71,9 @@
 #pragma link "cxEdit"
 #pragma link "cxMemo"
 #pragma link "cxTextEdit"
+#pragma link "AdvGrid"
+#pragma link "AdvObj"
+#pragma link "BaseGrid"
 #pragma resource "*.dfm"
 TFormMain *FormMain;
 //---------------------------------------------------------------------------
