@@ -4,7 +4,7 @@ object FormMain: TFormMain
   BorderStyle = bsDialog
   Caption = 'Solving Sdoku'
   ClientHeight = 560
-  ClientWidth = 797
+  ClientWidth = 751
   Color = clBtnFace
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object FormMain: TFormMain
   object ___pnBase: TPanel
     Left = 0
     Top = 124
-    Width = 797
+    Width = 751
     Height = 436
     Align = alClient
     BevelOuter = bvNone
@@ -31,20 +31,27 @@ object FormMain: TFormMain
     ExplicitWidth = 185
     ExplicitHeight = 41
     object memo: TcxMemo
-      Left = 480
+      Left = 434
       Top = 0
       Align = alRight
       TabOrder = 0
+      ExplicitLeft = 480
       Height = 436
       Width = 317
     end
     object AdvStringGrid1: TAdvStringGrid
-      Left = 40
-      Top = 40
+      Left = 16
+      Top = 16
       Width = 400
-      Height = 250
+      Height = 400
       Cursor = crDefault
+      ColCount = 9
+      DefaultColWidth = 44
+      DefaultRowHeight = 44
       DrawingStyle = gdsClassic
+      FixedCols = 0
+      RowCount = 9
+      FixedRows = 0
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -96,7 +103,8 @@ object FormMain: TFormMain
         'Larger than'
         'Smaller than'
         'Clear')
-      FixedRowHeight = 22
+      FixedColWidth = 44
+      FixedRowHeight = 44
       FixedFont.Charset = DEFAULT_CHARSET
       FixedFont.Color = clWindowText
       FixedFont.Height = -11
@@ -107,6 +115,7 @@ object FormMain: TFormMain
       HoverButtons.Position = hbLeftFromColumnLeft
       HTMLSettings.ImageFolder = 'images'
       HTMLSettings.ImageBaseName = 'img'
+      IntelliZoom = False
       PrintSettings.DateFormat = 'dd/mm/yyyy'
       PrintSettings.Font.Charset = DEFAULT_CHARSET
       PrintSettings.Font.Color = clWindowText
@@ -149,7 +158,7 @@ object FormMain: TFormMain
   object MainRibbonMenu: TdxRibbon
     Left = 0
     Top = 0
-    Width = 797
+    Width = 751
     Height = 124
     BarManager = BarMgr
     ColorSchemeName = 'DevExpressDarkStyle'
