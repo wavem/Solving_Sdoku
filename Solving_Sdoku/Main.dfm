@@ -151,6 +151,7 @@ object FormMain: TFormMain
       SearchFooter.HintFindPrev = 'Find previous occurrence'
       SearchFooter.HintHighlight = 'Highlight occurrences'
       SearchFooter.MatchCaseCaption = 'Match case'
+      ShowSelection = False
       SortSettings.DefaultFormat = ssAutomatic
       Version = '7.8.0.1'
     end
