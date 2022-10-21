@@ -86,11 +86,40 @@ __fastcall TFormMain::TFormMain(TComponent* Owner)
 
 void __fastcall TFormMain::InitProgram() {
 
+	for(int i = 0 ; i < grid->RowCount * grid->ColCount ; i++) {
+        grid->Cells[i % 9][i / 9] = i + 1;
+    }
 	PrintMsg(L"Init Complete");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 	memo->Lines->Add(_str);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
+{
+    TCanvas* t_pCanvas = new TCanvas;
+    t_pCanvas->Rectangle(grid->CellRect(2, 2));
+    t_pCanvas->MoveTo(0, 0);
+    t_pCanvas->LineTo(20, 20);
+
+	//grid->SetBounds(2, 2, 300, 300);
+#if 0
+	static int temp = 0;
+	//grid->GetCellProperties(3, 3)->BorderWidth += temp;
+
+    TCellProperties* t_cp;
+    t_cp = grid->GetCellProperties(3, 3);
+
+    t_cp->BorderWidth = temp;
+    grid->SetCellProperties(3, 3, t_cp);
+
+    grid->set
+
+    PrintMsg(temp);
+    temp++;
+#endif
 }
 //---------------------------------------------------------------------------
