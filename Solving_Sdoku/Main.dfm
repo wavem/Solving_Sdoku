@@ -54,13 +54,14 @@ object FormMain: TFormMain
       FixedRows = 0
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -20
       Font.Name = 'Tahoma'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
       ScrollBars = ssBoth
       TabOrder = 1
       HoverRowCells = [hcNormal, hcSelected]
+      OnGetAlignment = gridGetAlignment
       ActiveCellFont.Charset = DEFAULT_CHARSET
       ActiveCellFont.Color = clWindowText
       ActiveCellFont.Height = -11
@@ -154,6 +155,7 @@ object FormMain: TFormMain
       ShowSelection = False
       SortSettings.DefaultFormat = ssAutomatic
       Version = '7.8.0.1'
+      WordWrap = False
     end
   end
   object MainRibbonMenu: TdxRibbon

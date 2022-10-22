@@ -123,3 +123,11 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 #endif
 }
 //---------------------------------------------------------------------------
+void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
+          TVAlignment &VAlign)
+{
+    VAlign = vtaCenter;
+    HAlign = taCenter;
+}
+//---------------------------------------------------------------------------
+
