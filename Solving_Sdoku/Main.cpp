@@ -100,27 +100,11 @@ void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 
 void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
-    TCanvas* t_pCanvas = new TCanvas;
-    t_pCanvas->Rectangle(grid->CellRect(2, 2));
-    t_pCanvas->MoveTo(0, 0);
-    t_pCanvas->LineTo(20, 20);
-
+    TRect t_Rect = grid->CellRect(2, 2);
+    grid->Canvas->Rectangle(t_Rect);
+    grid->Canvas->MoveTo(t_Rect.Left, t_Rect.Top);
+    grid->Canvas->LineTo(t_Rect.Right, t_Rect.Bottom);
 	//grid->SetBounds(2, 2, 300, 300);
-#if 0
-	static int temp = 0;
-	//grid->GetCellProperties(3, 3)->BorderWidth += temp;
-
-    TCellProperties* t_cp;
-    t_cp = grid->GetCellProperties(3, 3);
-
-    t_cp->BorderWidth = temp;
-    grid->SetCellProperties(3, 3, t_cp);
-
-    grid->set
-
-    PrintMsg(temp);
-    temp++;
-#endif
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
