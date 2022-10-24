@@ -102,11 +102,14 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
     TRect t_Rect = grid->CellRect(2, 2);
     grid->Canvas->Rectangle(t_Rect);
+
+    t_Rect.SetHeight(t_Rect.Top + 2);
     grid->Canvas->MoveTo(t_Rect.Left, t_Rect.Top);
-    grid->Canvas->LineTo(t_Rect.Right, t_Rect.Bottom);
+    grid->Canvas->LineTo(t_Rect.Right, t_Rect.Top);
 	//grid->SetBounds(2, 2, 300, 300);
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign)
 {
@@ -114,4 +117,3 @@ void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol,
     HAlign = taCenter;
 }
 //---------------------------------------------------------------------------
-

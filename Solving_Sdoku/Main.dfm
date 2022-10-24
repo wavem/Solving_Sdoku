@@ -40,8 +40,8 @@ object FormMain: TFormMain
       Width = 317
     end
     object grid: TAdvStringGrid
-      Left = 16
-      Top = 16
+      Left = 20
+      Top = 24
       Width = 400
       Height = 400
       Cursor = crDefault
@@ -85,6 +85,7 @@ object FormMain: TFormMain
       ControlLook.DropDownFooter.Font.Style = []
       ControlLook.DropDownFooter.Visible = True
       ControlLook.DropDownFooter.Buttons = <>
+      DefaultAlignment = taCenter
       Filter = <>
       FilterDropDown.Font.Charset = DEFAULT_CHARSET
       FilterDropDown.Font.Color = clWindowText
@@ -156,6 +157,34 @@ object FormMain: TFormMain
       SortSettings.DefaultFormat = ssAutomatic
       Version = '7.8.0.1'
       WordWrap = False
+      object Shape1: TShape
+        Left = 0
+        Top = 129
+        Width = 397
+        Height = 3
+        Pen.Width = 2
+      end
+      object Shape2: TShape
+        Left = -1
+        Top = 261
+        Width = 397
+        Height = 3
+        Pen.Width = 2
+      end
+      object Shape3: TShape
+        Left = 129
+        Top = -1
+        Width = 3
+        Height = 397
+        Pen.Width = 2
+      end
+      object Shape4: TShape
+        Left = 261
+        Top = -2
+        Width = 3
+        Height = 397
+        Pen.Width = 2
+      end
     end
   end
   object MainRibbonMenu: TdxRibbon

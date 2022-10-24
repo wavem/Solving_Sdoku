@@ -89,9 +89,14 @@ __published:	// IDE-managed Components
 	TAdvStringGrid *grid;
 	TdxBar *BarMgrBar1;
 	TdxBarLargeButton *MenuBtn_1;
+	TShape *Shape1;
+	TShape *Shape2;
+	TShape *Shape3;
+	TShape *Shape4;
 	void __fastcall MenuBtn_1Click(TObject *Sender);
 	void __fastcall gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign);
+
 
 private:	// User declarations
 public:		// User declarations
