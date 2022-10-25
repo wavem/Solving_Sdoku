@@ -105,6 +105,13 @@ public:		// User declarations
 public: // START
 	void __fastcall InitProgram();
     void __fastcall PrintMsg(UnicodeString _str);
+
+public: // GAME
+	BYTE m_MainBoard[9][9];
+    int m_CurrentIdx;
+    bool __fastcall Input(int _Idx);
+    bool __fastcall Check();
+    void __fastcall Show();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TFormMain *FormMain;

@@ -86,6 +86,13 @@ __fastcall TFormMain::TFormMain(TComponent* Owner)
 
 void __fastcall TFormMain::InitProgram() {
 
+	// Random Generator Setting
+    srand((unsigned int)GetTickCount());
+
+    // Default Variables Setting
+    m_CurrentIdx = 0;
+    memset(m_MainBoard, 0, sizeof(m_MainBoard));
+
 	for(int i = 0 ; i < grid->RowCount * grid->ColCount ; i++) {
         grid->Cells[i % 9][i / 9] = i + 1;
     }
@@ -100,6 +107,14 @@ void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 
 void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
+	for(int i = 0 ; i < 9 ; i++) {
+    	Input(m_CurrentIdx);
+        m_CurrentIdx++;
+    }
+
+    Show();
+
+#if 0
     TRect t_Rect = grid->CellRect(2, 2);
     grid->Canvas->Rectangle(t_Rect);
 
@@ -107,6 +122,7 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
     grid->Canvas->MoveTo(t_Rect.Left, t_Rect.Top);
     grid->Canvas->LineTo(t_Rect.Right, t_Rect.Top);
 	//grid->SetBounds(2, 2, 300, 300);
+#endif
 }
 //---------------------------------------------------------------------------
 
@@ -115,5 +131,26 @@ void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol,
 {
     VAlign = vtaCenter;
     HAlign = taCenter;
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::Input(int _Idx) {
+   	*(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
+    Check();
+    return true;
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::Check() {
+	return false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::Show() {
+
+	for(int i = 0 ; i < 9 * 9 ; i++) {
+    	grid->Cells[i % 9][i / 9] = *(m_MainBoard[0] + i);
+    }
+
 }
 //---------------------------------------------------------------------------
