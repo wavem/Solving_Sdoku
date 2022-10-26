@@ -107,7 +107,7 @@ void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 
 void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
-	for(int i = 0 ; i < 9 ; i++) {
+	for(int i = 0 ; i < 81 ; i++) {
     	Input(m_CurrentIdx);
         m_CurrentIdx++;
     }
@@ -135,13 +135,25 @@ void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol,
 //---------------------------------------------------------------------------
 
 bool __fastcall TFormMain::Input(int _Idx) {
-   	*(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
+   	//*(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
+    *(m_MainBoard[0] + _Idx) = _Idx + 1;
     Check();
     return true;
 }
 //---------------------------------------------------------------------------
 
 bool __fastcall TFormMain::Check() {
+
+	//// Square Check
+    // Get Start Index
+    //if(m_CurrentIdx
+
+
+
+    //// Horizontal Line Check
+
+    //// Vertical Line Check
+
 	return false;
 }
 //---------------------------------------------------------------------------
