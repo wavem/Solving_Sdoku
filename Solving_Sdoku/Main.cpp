@@ -107,12 +107,15 @@ void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 
 void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
-	for(int i = 0 ; i < 81 ; i++) {
-    	Input(m_CurrentIdx);
-        m_CurrentIdx++;
+	m_CurrentIdx = 0;
+
+    while(m_CurrentIdx < 81) {
+    	if(Input(m_CurrentIdx))
+       		m_CurrentIdx++;
     }
 
     Show();
+    Check();
 
 #if 0
     TRect t_Rect = grid->CellRect(2, 2);
@@ -135,17 +138,55 @@ void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol,
 //---------------------------------------------------------------------------
 
 bool __fastcall TFormMain::Input(int _Idx) {
-   	//*(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
-    *(m_MainBoard[0] + _Idx) = _Idx + 1;
-    Check();
+    *(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
     return true;
+    return Check();
 }
 //---------------------------------------------------------------------------
 
 bool __fastcall TFormMain::Check() {
 
+	// Common
+    UnicodeString tempStr = L"";
+
 	//// Square Check
     // Get Start Index
+    int t_RowOffset = 0;
+    int t_ColOffset = 0;
+
+    t_RowOffset = (m_CurrentIdx / 9) / 3;
+    t_ColOffset = (m_CurrentIdx % 9) / 3;
+
+    BYTE t_SquareBuffer[9] = {0, };
+
+    t_SquareBuffer[0] = m_MainBoard[t_RowOffset * 3 + 0][t_ColOffset * 3 + 0];
+    t_SquareBuffer[1] = m_MainBoard[t_RowOffset * 3 + 0][t_ColOffset * 3 + 1];
+    t_SquareBuffer[2] = m_MainBoard[t_RowOffset * 3 + 0][t_ColOffset * 3 + 2];
+    t_SquareBuffer[3] = m_MainBoard[t_RowOffset * 3 + 1][t_ColOffset * 3 + 0];
+    t_SquareBuffer[4] = m_MainBoard[t_RowOffset * 3 + 1][t_ColOffset * 3 + 1];
+    t_SquareBuffer[5] = m_MainBoard[t_RowOffset * 3 + 1][t_ColOffset * 3 + 2];
+    t_SquareBuffer[6] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 0];
+    t_SquareBuffer[7] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 1];
+    t_SquareBuffer[8] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 2];
+
+    // Test Print
+    tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[0], t_SquareBuffer[1], t_SquareBuffer[2]);
+    PrintMsg(tempStr);
+    tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[3], t_SquareBuffer[4], t_SquareBuffer[5]);
+    PrintMsg(tempStr);
+    tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[6], t_SquareBuffer[7], t_SquareBuffer[8]);
+    PrintMsg(tempStr);
+
+    for(int i = 0 ; i < 9 ; i++) {
+        for(int j = 0 ; j < 9 ; j++) {
+        	if(i == j) continue;
+            if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) return false;
+        }
+    }
+
+    return true;
+
     //if(m_CurrentIdx
 
 
@@ -163,6 +204,5 @@ void __fastcall TFormMain::Show() {
 	for(int i = 0 ; i < 9 * 9 ; i++) {
     	grid->Cells[i % 9][i / 9] = *(m_MainBoard[0] + i);
     }
-
 }
 //---------------------------------------------------------------------------
