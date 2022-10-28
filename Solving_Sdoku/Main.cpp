@@ -107,15 +107,22 @@ void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 
 void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
+	// Common
+    UnicodeString tempStr = L"";
+
 	m_CurrentIdx = 0;
 
     while(m_CurrentIdx < 81) {
-    	if(Input(m_CurrentIdx))
-       		m_CurrentIdx++;
+    	if(Input(m_CurrentIdx)) {
+            tempStr.sprintf(L"Input Success (Idx : %d", m_CurrentIdx);
+            PrintMsg(tempStr);
+            m_CurrentIdx++;
+        }
+
     }
 
     Show();
-    Check();
+    //Check();
 
 #if 0
     TRect t_Rect = grid->CellRect(2, 2);
@@ -139,7 +146,7 @@ void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol,
 
 bool __fastcall TFormMain::Input(int _Idx) {
     *(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
-    return true;
+    //return true;
     return Check();
 }
 //---------------------------------------------------------------------------
@@ -170,18 +177,20 @@ bool __fastcall TFormMain::Check() {
     t_SquareBuffer[8] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 2];
 
     // Test Print
-    tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[0], t_SquareBuffer[1], t_SquareBuffer[2]);
-    PrintMsg(tempStr);
-    tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[3], t_SquareBuffer[4], t_SquareBuffer[5]);
-    PrintMsg(tempStr);
-    tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[6], t_SquareBuffer[7], t_SquareBuffer[8]);
-    PrintMsg(tempStr);
+    //tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[0], t_SquareBuffer[1], t_SquareBuffer[2]);
+    //PrintMsg(tempStr);
+    //tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[3], t_SquareBuffer[4], t_SquareBuffer[5]);
+    //PrintMsg(tempStr);
+    //tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[6], t_SquareBuffer[7], t_SquareBuffer[8]);
+    //PrintMsg(tempStr);
 
     for(int i = 0 ; i < 9 ; i++) {
         for(int j = 0 ; j < 9 ; j++) {
         	if(i == j) continue;
             if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
-            if(t_SquareBuffer[i] == t_SquareBuffer[j]) return false;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) {
+            	return false;
+            }
         }
     }
 
