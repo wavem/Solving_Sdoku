@@ -105,6 +105,14 @@ void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
+          TVAlignment &VAlign)
+{
+    VAlign = vtaCenter;
+    HAlign = taCenter;
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
 	// Common
@@ -120,33 +128,12 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
         }
 
     }
-
     Show();
-    //Check();
-
-#if 0
-    TRect t_Rect = grid->CellRect(2, 2);
-    grid->Canvas->Rectangle(t_Rect);
-
-    t_Rect.SetHeight(t_Rect.Top + 2);
-    grid->Canvas->MoveTo(t_Rect.Left, t_Rect.Top);
-    grid->Canvas->LineTo(t_Rect.Right, t_Rect.Top);
-	//grid->SetBounds(2, 2, 300, 300);
-#endif
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
-          TVAlignment &VAlign)
-{
-    VAlign = vtaCenter;
-    HAlign = taCenter;
 }
 //---------------------------------------------------------------------------
 
 bool __fastcall TFormMain::Input(int _Idx) {
     *(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
-    //return true;
     return Check();
 }
 //---------------------------------------------------------------------------
@@ -196,15 +183,10 @@ bool __fastcall TFormMain::Check() {
 
     return true;
 
-    //if(m_CurrentIdx
-
-
 
     //// Horizontal Line Check
 
     //// Vertical Line Check
-
-	return false;
 }
 //---------------------------------------------------------------------------
 
