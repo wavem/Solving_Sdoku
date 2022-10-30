@@ -181,10 +181,23 @@ bool __fastcall TFormMain::Check() {
         }
     }
 
+    //// Horizontal Line Check
+    memcpy(t_SquareBuffer, &(m_MainBoard[t_RowOffset][0]), 9);
+    for(int i = 0 ; i < 9 ; i++) {
+    	for(int j = 0 ; j < 9 ; j++) {
+        	if(i == j) continue;
+            if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) {
+            	return false;
+            }
+        }
+    }
+
+
     return true;
 
 
-    //// Horizontal Line Check
+
 
     //// Vertical Line Check
 }
