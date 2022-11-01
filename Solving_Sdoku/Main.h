@@ -112,6 +112,7 @@ public: // GAME
     bool __fastcall Input(int _Idx);
     bool __fastcall Check();
     void __fastcall Show();
+    int m_CheckCount;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TFormMain *FormMain;

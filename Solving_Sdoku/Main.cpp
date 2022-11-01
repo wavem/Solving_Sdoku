@@ -91,6 +91,7 @@ void __fastcall TFormMain::InitProgram() {
 
     // Default Variables Setting
     m_CurrentIdx = 0;
+    m_CheckCount = 0;
     memset(m_MainBoard, 0, sizeof(m_MainBoard));
 
 	for(int i = 0 ; i < grid->RowCount * grid->ColCount ; i++) {
@@ -117,18 +118,33 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 {
 	// Common
     UnicodeString tempStr = L"";
+    PrintMsg(L"START");
 
 	m_CurrentIdx = 0;
+    m_CheckCount = 0;
 
     while(m_CurrentIdx < 81) {
-    	if(Input(m_CurrentIdx)) {
-            tempStr.sprintf(L"Input Success (Idx : %d", m_CurrentIdx);
-            PrintMsg(tempStr);
-            m_CurrentIdx++;
-        }
+    	if(m_CheckCount > 50) {
+        	tempStr.sprintf(L"Try Count : %d", m_CheckCount);
+        	PrintMsg(tempStr);
 
+            // Restart Routine
+            m_CurrentIdx = 0;
+            m_CheckCount = 0;
+            memset(m_MainBoard, 0, sizeof(m_MainBoard));
+        }
+    	if(Input(m_CurrentIdx)) {
+            //tempStr.sprintf(L"Input Success (Idx : %d), Check Count : %d", m_CurrentIdx, m_CheckCount);
+            //PrintMsg(tempStr);
+            m_CurrentIdx++;
+            m_CheckCount = 0;
+        }
     }
+
     Show();
+    //tempStr.sprintf(L"Try Count : %d", m_CheckCount);
+    //PrintMsg(tempStr);
+    PrintMsg(L"Complete");
 }
 //---------------------------------------------------------------------------
 
@@ -142,6 +158,8 @@ bool __fastcall TFormMain::Check() {
 
 	// Common
     UnicodeString tempStr = L"";
+
+    m_CheckCount++;
 
 	//// Square Check
     // Get Start Index
@@ -182,7 +200,7 @@ bool __fastcall TFormMain::Check() {
     }
 
     //// Horizontal Line Check
-    memcpy(t_SquareBuffer, &(m_MainBoard[t_RowOffset][0]), 9);
+    memcpy(t_SquareBuffer, &(m_MainBoard[m_CurrentIdx / 9][0]), 9);
     for(int i = 0 ; i < 9 ; i++) {
     	for(int j = 0 ; j < 9 ; j++) {
         	if(i == j) continue;
@@ -193,13 +211,32 @@ bool __fastcall TFormMain::Check() {
         }
     }
 
+    //// Vertical Line Check
+    t_SquareBuffer[0] = m_MainBoard[0][m_CurrentIdx % 9];
+    t_SquareBuffer[1] = m_MainBoard[1][m_CurrentIdx % 9];
+    t_SquareBuffer[2] = m_MainBoard[2][m_CurrentIdx % 9];
+    t_SquareBuffer[3] = m_MainBoard[3][m_CurrentIdx % 9];
+    t_SquareBuffer[4] = m_MainBoard[4][m_CurrentIdx % 9];
+    t_SquareBuffer[5] = m_MainBoard[5][m_CurrentIdx % 9];
+    t_SquareBuffer[6] = m_MainBoard[6][m_CurrentIdx % 9];
+    t_SquareBuffer[7] = m_MainBoard[7][m_CurrentIdx % 9];
+    t_SquareBuffer[8] = m_MainBoard[8][m_CurrentIdx % 9];
 
+    for(int i = 0 ; i < 9 ; i++) {
+    	for(int j = 0 ; j < 9 ; j++) {
+        	if(i == j) continue;
+            if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) {
+            	return false;
+            }
+        }
+    }
     return true;
 
 
 
 
-    //// Vertical Line Check
+
 }
 //---------------------------------------------------------------------------
 
