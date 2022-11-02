@@ -122,6 +122,7 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
 
 	m_CurrentIdx = 0;
     m_CheckCount = 0;
+    memset(m_MainBoard, 0, sizeof(m_MainBoard));
 
     while(m_CurrentIdx < 81) {
     	if(m_CheckCount > 50) {
