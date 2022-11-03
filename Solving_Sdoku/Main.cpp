@@ -135,16 +135,12 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
             memset(m_MainBoard, 0, sizeof(m_MainBoard));
         }
     	if(Input(m_CurrentIdx)) {
-            //tempStr.sprintf(L"Input Success (Idx : %d), Check Count : %d", m_CurrentIdx, m_CheckCount);
-            //PrintMsg(tempStr);
             m_CurrentIdx++;
             m_CheckCount = 0;
         }
     }
 
     Show();
-    //tempStr.sprintf(L"Try Count : %d", m_CheckCount);
-    //PrintMsg(tempStr);
     PrintMsg(L"Complete");
 }
 //---------------------------------------------------------------------------
@@ -160,6 +156,7 @@ bool __fastcall TFormMain::Check() {
 	// Common
     UnicodeString tempStr = L"";
 
+    // Increase Check Count
     m_CheckCount++;
 
 	//// Square Check
@@ -181,14 +178,6 @@ bool __fastcall TFormMain::Check() {
     t_SquareBuffer[6] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 0];
     t_SquareBuffer[7] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 1];
     t_SquareBuffer[8] = m_MainBoard[t_RowOffset * 3 + 2][t_ColOffset * 3 + 2];
-
-    // Test Print
-    //tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[0], t_SquareBuffer[1], t_SquareBuffer[2]);
-    //PrintMsg(tempStr);
-    //tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[3], t_SquareBuffer[4], t_SquareBuffer[5]);
-    //PrintMsg(tempStr);
-    //tempStr.sprintf(L"%02d %02d %02d", t_SquareBuffer[6], t_SquareBuffer[7], t_SquareBuffer[8]);
-    //PrintMsg(tempStr);
 
     for(int i = 0 ; i < 9 ; i++) {
         for(int j = 0 ; j < 9 ; j++) {
@@ -232,17 +221,13 @@ bool __fastcall TFormMain::Check() {
             }
         }
     }
+
+    // If All Check Success, Return True.
     return true;
-
-
-
-
-
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFormMain::Show() {
-
 	for(int i = 0 ; i < 9 * 9 ; i++) {
     	grid->Cells[i % 9][i / 9] = *(m_MainBoard[0] + i);
     }
