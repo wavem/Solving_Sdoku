@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Main.h"
+#include "Dlg_Version.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "cxClasses"
