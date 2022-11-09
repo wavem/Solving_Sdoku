@@ -234,3 +234,12 @@ void __fastcall TFormMain::Show() {
     }
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TFormMain::MenuBtn_VersionClick(TObject *Sender)
+{
+	TFormVersion *p_Dlg = new TFormVersion(NULL);
+    p_Dlg->ShowModal();
+    delete p_Dlg;
+}
+//---------------------------------------------------------------------------
+
