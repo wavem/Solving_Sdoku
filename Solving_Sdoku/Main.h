@@ -96,6 +96,15 @@ __published:	// IDE-managed Components
 	TShape *Shape3;
 	TShape *Shape4;
 	TdxBarLargeButton *MenuBtn_Version;
+	TdxBarLargeButton *dxBarLargeButton1;
+	TdxBarLargeButton *dxBarLargeButton2;
+	TdxBarLargeButton *dxBarLargeButton3;
+	TdxBar *BarMgrBar2;
+	TdxBarLargeButton *dxBarLargeButton4;
+	TdxBarLargeButton *MenuBtn_Solver;
+	TdxBarLargeButton *MenuBtn_Maker;
+	TdxBarLargeButton *MenuBtn_Player;
+	TdxBarLargeButton *MenuBtn_Tester;
 	void __fastcall MenuBtn_1Click(TObject *Sender);
 	void __fastcall gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign);
