@@ -83,18 +83,11 @@
 class TFormMain : public TForm
 {
 __published:	// IDE-managed Components
-	TPanel *___pnBase;
 	TdxRibbonTab *Menu;
 	TdxRibbon *MainRibbonMenu;
 	TdxBarManager *BarMgr;
-	TcxMemo *memo;
-	TAdvStringGrid *grid;
 	TdxBar *BarMgrBar1;
 	TdxBarLargeButton *MenuBtn_1;
-	TShape *Shape1;
-	TShape *Shape2;
-	TShape *Shape3;
-	TShape *Shape4;
 	TdxBarLargeButton *MenuBtn_Version;
 	TdxBarLargeButton *dxBarLargeButton1;
 	TdxBarLargeButton *dxBarLargeButton2;
@@ -105,6 +98,23 @@ __published:	// IDE-managed Components
 	TdxBarLargeButton *MenuBtn_Maker;
 	TdxBarLargeButton *MenuBtn_Player;
 	TdxBarLargeButton *MenuBtn_Tester;
+	TPanel *___pnBase;
+	TNotebook *Notebook_Main;
+	TPanel *__pnBase_Page_0_Welcome;
+	TPanel *__pnBase_Page_1_Tester;
+	TPanel *__pnBase_Page_2_Maker;
+	TPanel *__pnBase_Page_4_Solver;
+	TcxMemo *memo;
+	TAdvStringGrid *grid;
+	TShape *Shape1;
+	TShape *Shape2;
+	TShape *Shape3;
+	TShape *Shape4;
+	TLabel *lb_Welcome;
+	TLabel *Label1;
+	TLabel *Label2;
+	TPanel *__pnBase_Page_3_Player;
+	TLabel *Label3;
 	void __fastcall MenuBtn_1Click(TObject *Sender);
 	void __fastcall gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign);

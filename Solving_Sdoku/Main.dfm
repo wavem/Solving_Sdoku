@@ -16,172 +16,6 @@ object FormMain: TFormMain
   Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object ___pnBase: TPanel
-    Left = 0
-    Top = 124
-    Width = 751
-    Height = 436
-    Align = alClient
-    BevelOuter = bvNone
-    Color = 2500134
-    ParentBackground = False
-    TabOrder = 0
-    object memo: TcxMemo
-      Left = 434
-      Top = 0
-      Align = alRight
-      TabOrder = 0
-      Height = 436
-      Width = 317
-    end
-    object grid: TAdvStringGrid
-      Left = 20
-      Top = 24
-      Width = 400
-      Height = 400
-      Cursor = crDefault
-      ColCount = 9
-      DefaultColWidth = 44
-      DefaultRowHeight = 44
-      DrawingStyle = gdsClassic
-      FixedCols = 0
-      RowCount = 9
-      FixedRows = 0
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -20
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-      ScrollBars = ssBoth
-      TabOrder = 1
-      HoverRowCells = [hcNormal, hcSelected]
-      OnGetAlignment = gridGetAlignment
-      ActiveCellFont.Charset = DEFAULT_CHARSET
-      ActiveCellFont.Color = clWindowText
-      ActiveCellFont.Height = -11
-      ActiveCellFont.Name = 'Tahoma'
-      ActiveCellFont.Style = [fsBold]
-      ControlLook.FixedGradientHoverFrom = clGray
-      ControlLook.FixedGradientHoverTo = clWhite
-      ControlLook.FixedGradientDownFrom = clGray
-      ControlLook.FixedGradientDownTo = clSilver
-      ControlLook.DropDownHeader.Font.Charset = DEFAULT_CHARSET
-      ControlLook.DropDownHeader.Font.Color = clWindowText
-      ControlLook.DropDownHeader.Font.Height = -11
-      ControlLook.DropDownHeader.Font.Name = 'Tahoma'
-      ControlLook.DropDownHeader.Font.Style = []
-      ControlLook.DropDownHeader.Visible = True
-      ControlLook.DropDownHeader.Buttons = <>
-      ControlLook.DropDownFooter.Font.Charset = DEFAULT_CHARSET
-      ControlLook.DropDownFooter.Font.Color = clWindowText
-      ControlLook.DropDownFooter.Font.Height = -11
-      ControlLook.DropDownFooter.Font.Name = 'Tahoma'
-      ControlLook.DropDownFooter.Font.Style = []
-      ControlLook.DropDownFooter.Visible = True
-      ControlLook.DropDownFooter.Buttons = <>
-      DefaultAlignment = taCenter
-      Filter = <>
-      FilterDropDown.Font.Charset = DEFAULT_CHARSET
-      FilterDropDown.Font.Color = clWindowText
-      FilterDropDown.Font.Height = -11
-      FilterDropDown.Font.Name = 'Tahoma'
-      FilterDropDown.Font.Style = []
-      FilterDropDown.TextChecked = 'Checked'
-      FilterDropDown.TextUnChecked = 'Unchecked'
-      FilterDropDownClear = '(All)'
-      FilterEdit.TypeNames.Strings = (
-        'Starts with'
-        'Ends with'
-        'Contains'
-        'Not contains'
-        'Equal'
-        'Not equal'
-        'Larger than'
-        'Smaller than'
-        'Clear')
-      FixedColWidth = 44
-      FixedRowHeight = 44
-      FixedFont.Charset = DEFAULT_CHARSET
-      FixedFont.Color = clWindowText
-      FixedFont.Height = -11
-      FixedFont.Name = 'Tahoma'
-      FixedFont.Style = [fsBold]
-      FloatFormat = '%.2f'
-      HoverButtons.Buttons = <>
-      HoverButtons.Position = hbLeftFromColumnLeft
-      HTMLSettings.ImageFolder = 'images'
-      HTMLSettings.ImageBaseName = 'img'
-      IntelliZoom = False
-      PrintSettings.DateFormat = 'dd/mm/yyyy'
-      PrintSettings.Font.Charset = DEFAULT_CHARSET
-      PrintSettings.Font.Color = clWindowText
-      PrintSettings.Font.Height = -11
-      PrintSettings.Font.Name = 'Tahoma'
-      PrintSettings.Font.Style = []
-      PrintSettings.FixedFont.Charset = DEFAULT_CHARSET
-      PrintSettings.FixedFont.Color = clWindowText
-      PrintSettings.FixedFont.Height = -11
-      PrintSettings.FixedFont.Name = 'Tahoma'
-      PrintSettings.FixedFont.Style = []
-      PrintSettings.HeaderFont.Charset = DEFAULT_CHARSET
-      PrintSettings.HeaderFont.Color = clWindowText
-      PrintSettings.HeaderFont.Height = -11
-      PrintSettings.HeaderFont.Name = 'Tahoma'
-      PrintSettings.HeaderFont.Style = []
-      PrintSettings.FooterFont.Charset = DEFAULT_CHARSET
-      PrintSettings.FooterFont.Color = clWindowText
-      PrintSettings.FooterFont.Height = -11
-      PrintSettings.FooterFont.Name = 'Tahoma'
-      PrintSettings.FooterFont.Style = []
-      PrintSettings.PageNumSep = '/'
-      SearchFooter.FindNextCaption = 'Find &next'
-      SearchFooter.FindPrevCaption = 'Find &previous'
-      SearchFooter.Font.Charset = DEFAULT_CHARSET
-      SearchFooter.Font.Color = clWindowText
-      SearchFooter.Font.Height = -11
-      SearchFooter.Font.Name = 'Tahoma'
-      SearchFooter.Font.Style = []
-      SearchFooter.HighLightCaption = 'Highlight'
-      SearchFooter.HintClose = 'Close'
-      SearchFooter.HintFindNext = 'Find next occurrence'
-      SearchFooter.HintFindPrev = 'Find previous occurrence'
-      SearchFooter.HintHighlight = 'Highlight occurrences'
-      SearchFooter.MatchCaseCaption = 'Match case'
-      ShowSelection = False
-      SortSettings.DefaultFormat = ssAutomatic
-      Version = '7.8.0.1'
-      WordWrap = False
-      object Shape1: TShape
-        Left = 0
-        Top = 129
-        Width = 397
-        Height = 3
-        Pen.Width = 2
-      end
-      object Shape2: TShape
-        Left = -1
-        Top = 261
-        Width = 397
-        Height = 3
-        Pen.Width = 2
-      end
-      object Shape3: TShape
-        Left = 129
-        Top = -1
-        Width = 3
-        Height = 397
-        Pen.Width = 2
-      end
-      object Shape4: TShape
-        Left = 261
-        Top = -2
-        Width = 3
-        Height = 397
-        Pen.Width = 2
-      end
-    end
-  end
   object MainRibbonMenu: TdxRibbon
     Left = 0
     Top = 0
@@ -190,7 +24,7 @@ object FormMain: TFormMain
     BarManager = BarMgr
     ColorSchemeName = 'DevExpressDarkStyle'
     Contexts = <>
-    TabOrder = 1
+    TabOrder = 0
     TabStop = False
     object Menu: TdxRibbonTab
       Active = True
@@ -203,6 +37,355 @@ object FormMain: TFormMain
           ToolbarName = 'BarMgrBar2'
         end>
       Index = 0
+    end
+  end
+  object ___pnBase: TPanel
+    Left = 0
+    Top = 124
+    Width = 751
+    Height = 436
+    Align = alClient
+    BevelOuter = bvNone
+    Color = 2500134
+    ParentBackground = False
+    TabOrder = 5
+    ExplicitLeft = 8
+    ExplicitTop = 137
+    ExplicitWidth = 585
+    ExplicitHeight = 281
+    object Notebook_Main: TNotebook
+      Left = 0
+      Top = 0
+      Width = 751
+      Height = 436
+      Align = alClient
+      TabOrder = 0
+      ExplicitLeft = 40
+      ExplicitTop = 32
+      ExplicitWidth = 313
+      ExplicitHeight = 209
+      object TPage
+        Left = 0
+        Top = 0
+        Caption = 'Main'
+        ExplicitWidth = 150
+        ExplicitHeight = 150
+        object __pnBase_Page_0_Welcome: TPanel
+          Left = 0
+          Top = 0
+          Width = 751
+          Height = 436
+          Align = alClient
+          BevelOuter = bvNone
+          Color = 2500134
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 32
+          ExplicitTop = 72
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object lb_Welcome: TLabel
+            Left = 232
+            Top = 163
+            Width = 272
+            Height = 71
+            Caption = 'Welcome'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -59
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+        end
+      end
+      object TPage
+        Left = 0
+        Top = 0
+        HelpContext = 1
+        Caption = 'Tester'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object __pnBase_Page_1_Tester: TPanel
+          Left = 0
+          Top = 0
+          Width = 751
+          Height = 436
+          Align = alClient
+          BevelOuter = bvNone
+          Color = 2500134
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 64
+          ExplicitTop = 48
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object memo: TcxMemo
+            Left = 434
+            Top = 0
+            Align = alRight
+            TabOrder = 0
+            ExplicitHeight = 281
+            Height = 436
+            Width = 317
+          end
+          object grid: TAdvStringGrid
+            Left = 17
+            Top = 17
+            Width = 400
+            Height = 400
+            Cursor = crDefault
+            ColCount = 9
+            DefaultColWidth = 44
+            DefaultRowHeight = 44
+            DrawingStyle = gdsClassic
+            FixedCols = 0
+            RowCount = 9
+            FixedRows = 0
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ScrollBars = ssBoth
+            TabOrder = 1
+            HoverRowCells = [hcNormal, hcSelected]
+            OnGetAlignment = gridGetAlignment
+            ActiveCellFont.Charset = DEFAULT_CHARSET
+            ActiveCellFont.Color = clWindowText
+            ActiveCellFont.Height = -11
+            ActiveCellFont.Name = 'Tahoma'
+            ActiveCellFont.Style = [fsBold]
+            ControlLook.FixedGradientHoverFrom = clGray
+            ControlLook.FixedGradientHoverTo = clWhite
+            ControlLook.FixedGradientDownFrom = clGray
+            ControlLook.FixedGradientDownTo = clSilver
+            ControlLook.DropDownHeader.Font.Charset = DEFAULT_CHARSET
+            ControlLook.DropDownHeader.Font.Color = clWindowText
+            ControlLook.DropDownHeader.Font.Height = -11
+            ControlLook.DropDownHeader.Font.Name = 'Tahoma'
+            ControlLook.DropDownHeader.Font.Style = []
+            ControlLook.DropDownHeader.Visible = True
+            ControlLook.DropDownHeader.Buttons = <>
+            ControlLook.DropDownFooter.Font.Charset = DEFAULT_CHARSET
+            ControlLook.DropDownFooter.Font.Color = clWindowText
+            ControlLook.DropDownFooter.Font.Height = -11
+            ControlLook.DropDownFooter.Font.Name = 'Tahoma'
+            ControlLook.DropDownFooter.Font.Style = []
+            ControlLook.DropDownFooter.Visible = True
+            ControlLook.DropDownFooter.Buttons = <>
+            DefaultAlignment = taCenter
+            Filter = <>
+            FilterDropDown.Font.Charset = DEFAULT_CHARSET
+            FilterDropDown.Font.Color = clWindowText
+            FilterDropDown.Font.Height = -11
+            FilterDropDown.Font.Name = 'Tahoma'
+            FilterDropDown.Font.Style = []
+            FilterDropDown.TextChecked = 'Checked'
+            FilterDropDown.TextUnChecked = 'Unchecked'
+            FilterDropDownClear = '(All)'
+            FilterEdit.TypeNames.Strings = (
+              'Starts with'
+              'Ends with'
+              'Contains'
+              'Not contains'
+              'Equal'
+              'Not equal'
+              'Larger than'
+              'Smaller than'
+              'Clear')
+            FixedColWidth = 44
+            FixedRowHeight = 44
+            FixedFont.Charset = DEFAULT_CHARSET
+            FixedFont.Color = clWindowText
+            FixedFont.Height = -11
+            FixedFont.Name = 'Tahoma'
+            FixedFont.Style = [fsBold]
+            FloatFormat = '%.2f'
+            HoverButtons.Buttons = <>
+            HoverButtons.Position = hbLeftFromColumnLeft
+            HTMLSettings.ImageFolder = 'images'
+            HTMLSettings.ImageBaseName = 'img'
+            IntelliZoom = False
+            PrintSettings.DateFormat = 'dd/mm/yyyy'
+            PrintSettings.Font.Charset = DEFAULT_CHARSET
+            PrintSettings.Font.Color = clWindowText
+            PrintSettings.Font.Height = -11
+            PrintSettings.Font.Name = 'Tahoma'
+            PrintSettings.Font.Style = []
+            PrintSettings.FixedFont.Charset = DEFAULT_CHARSET
+            PrintSettings.FixedFont.Color = clWindowText
+            PrintSettings.FixedFont.Height = -11
+            PrintSettings.FixedFont.Name = 'Tahoma'
+            PrintSettings.FixedFont.Style = []
+            PrintSettings.HeaderFont.Charset = DEFAULT_CHARSET
+            PrintSettings.HeaderFont.Color = clWindowText
+            PrintSettings.HeaderFont.Height = -11
+            PrintSettings.HeaderFont.Name = 'Tahoma'
+            PrintSettings.HeaderFont.Style = []
+            PrintSettings.FooterFont.Charset = DEFAULT_CHARSET
+            PrintSettings.FooterFont.Color = clWindowText
+            PrintSettings.FooterFont.Height = -11
+            PrintSettings.FooterFont.Name = 'Tahoma'
+            PrintSettings.FooterFont.Style = []
+            PrintSettings.PageNumSep = '/'
+            SearchFooter.FindNextCaption = 'Find &next'
+            SearchFooter.FindPrevCaption = 'Find &previous'
+            SearchFooter.Font.Charset = DEFAULT_CHARSET
+            SearchFooter.Font.Color = clWindowText
+            SearchFooter.Font.Height = -11
+            SearchFooter.Font.Name = 'Tahoma'
+            SearchFooter.Font.Style = []
+            SearchFooter.HighLightCaption = 'Highlight'
+            SearchFooter.HintClose = 'Close'
+            SearchFooter.HintFindNext = 'Find next occurrence'
+            SearchFooter.HintFindPrev = 'Find previous occurrence'
+            SearchFooter.HintHighlight = 'Highlight occurrences'
+            SearchFooter.MatchCaseCaption = 'Match case'
+            ShowSelection = False
+            SortSettings.DefaultFormat = ssAutomatic
+            Version = '7.8.0.1'
+            WordWrap = False
+            object Shape1: TShape
+              Left = 0
+              Top = 129
+              Width = 397
+              Height = 3
+              Pen.Width = 2
+            end
+            object Shape2: TShape
+              Left = -1
+              Top = 261
+              Width = 397
+              Height = 3
+              Pen.Width = 2
+            end
+            object Shape3: TShape
+              Left = 129
+              Top = -1
+              Width = 3
+              Height = 397
+              Pen.Width = 2
+            end
+            object Shape4: TShape
+              Left = 261
+              Top = -2
+              Width = 3
+              Height = 397
+              Pen.Width = 2
+            end
+          end
+        end
+      end
+      object TPage
+        Left = 0
+        Top = 0
+        HelpContext = 2
+        Caption = 'Maker'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object __pnBase_Page_2_Maker: TPanel
+          Left = 0
+          Top = 0
+          Width = 751
+          Height = 436
+          Align = alClient
+          BevelOuter = bvNone
+          Color = 2500134
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 56
+          ExplicitTop = 64
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object Label1: TLabel
+            Left = 56
+            Top = 40
+            Width = 93
+            Height = 35
+            Caption = 'MAker'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -29
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+        end
+      end
+      object TPage
+        Left = 0
+        Top = 0
+        HelpContext = 3
+        Caption = 'Player'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object __pnBase_Page_3_Player: TPanel
+          Left = 0
+          Top = 0
+          Width = 751
+          Height = 436
+          Align = alClient
+          BevelOuter = bvNone
+          Color = 2500134
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 160
+          ExplicitTop = 64
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object Label3: TLabel
+            Left = 320
+            Top = 24
+            Width = 92
+            Height = 35
+            Caption = 'Player'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -29
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+        end
+      end
+      object TPage
+        Left = 0
+        Top = 0
+        HelpContext = 4
+        Caption = 'Solver'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object __pnBase_Page_4_Solver: TPanel
+          Left = 0
+          Top = 0
+          Width = 751
+          Height = 436
+          Align = alClient
+          BevelOuter = bvNone
+          Color = 2500134
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 32
+          ExplicitTop = 72
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object Label2: TLabel
+            Left = 312
+            Top = 16
+            Width = 92
+            Height = 35
+            Caption = 'Solver'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -29
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+        end
+      end
     end
   end
   object BarMgr: TdxBarManager
