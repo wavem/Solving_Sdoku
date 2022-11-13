@@ -87,6 +87,9 @@ __fastcall TFormMain::TFormMain(TComponent* Owner)
 
 void __fastcall TFormMain::InitProgram() {
 
+	// Notebook Default Page Setting
+    Notebook_Main->PageIndex = 0;
+
 	// Random Generator Setting
     srand((unsigned int)GetTickCount());
 
@@ -240,6 +243,14 @@ void __fastcall TFormMain::MenuBtn_VersionClick(TObject *Sender)
 	TFormVersion *p_Dlg = new TFormVersion(NULL);
     p_Dlg->ShowModal();
     delete p_Dlg;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::MenuBtn_Click(TObject *Sender)
+{
+	TdxBarLargeButton* p_Btn = (TdxBarLargeButton*)Sender;
+    int t_Tag = p_Btn->Tag;
+    Notebook_Main->PageIndex = t_Tag;
 }
 //---------------------------------------------------------------------------
 

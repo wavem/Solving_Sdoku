@@ -119,6 +119,7 @@ __published:	// IDE-managed Components
 	void __fastcall gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign);
 	void __fastcall MenuBtn_VersionClick(TObject *Sender);
+	void __fastcall MenuBtn_Click(TObject *Sender);
 
 
 private:	// User declarations

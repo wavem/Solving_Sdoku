@@ -768,10 +768,12 @@ object FormMain: TFormMain
       Visible = ivAlways
     end
     object MenuBtn_Solver: TdxBarLargeButton
+      Tag = 4
       Caption = 'Solver'
       Category = 0
       Hint = 'Solver'
       Visible = ivAlways
+      OnClick = MenuBtn_Click
       HotGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000
@@ -906,10 +908,12 @@ object FormMain: TFormMain
       Width = 60
     end
     object MenuBtn_Maker: TdxBarLargeButton
+      Tag = 2
       Caption = 'Maker'
       Category = 0
       Hint = 'Maker'
       Visible = ivAlways
+      OnClick = MenuBtn_Click
       HotGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000
@@ -1044,10 +1048,12 @@ object FormMain: TFormMain
       Width = 60
     end
     object MenuBtn_Player: TdxBarLargeButton
+      Tag = 3
       Caption = 'Player'
       Category = 0
       Hint = 'Player'
       Visible = ivAlways
+      OnClick = MenuBtn_Click
       HotGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000
@@ -1182,10 +1188,12 @@ object FormMain: TFormMain
       Width = 60
     end
     object MenuBtn_Tester: TdxBarLargeButton
+      Tag = 1
       Caption = 'Tester'
       Category = 0
       Hint = 'Tester'
       Visible = ivAlways
+      OnClick = MenuBtn_Click
       HotGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000
