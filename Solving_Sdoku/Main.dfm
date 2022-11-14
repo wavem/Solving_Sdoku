@@ -59,6 +59,7 @@ object FormMain: TFormMain
       Width = 751
       Height = 436
       Align = alClient
+      PageIndex = 4
       TabOrder = 0
       ExplicitLeft = 40
       ExplicitTop = 32
@@ -247,28 +248,28 @@ object FormMain: TFormMain
             SortSettings.DefaultFormat = ssAutomatic
             Version = '7.8.0.1'
             WordWrap = False
-            object Shape1: TShape
+            object Shape_Tester_1: TShape
               Left = 0
               Top = 129
               Width = 397
               Height = 3
               Pen.Width = 2
             end
-            object Shape2: TShape
+            object Shape_Tester_2: TShape
               Left = -1
               Top = 261
               Width = 397
               Height = 3
               Pen.Width = 2
             end
-            object Shape3: TShape
+            object Shape_Tester_3: TShape
               Left = 129
               Top = -1
               Width = 3
               Height = 397
               Pen.Width = 2
             end
-            object Shape4: TShape
+            object Shape_Tester_4: TShape
               Left = 261
               Top = -2
               Width = 3
@@ -299,12 +300,12 @@ object FormMain: TFormMain
           ExplicitTop = 64
           ExplicitWidth = 185
           ExplicitHeight = 41
-          object Label1: TLabel
-            Left = 56
-            Top = 40
-            Width = 93
+          object lb_Maker: TLabel
+            Left = 312
+            Top = 16
+            Width = 105
             Height = 35
-            Caption = 'MAker'
+            Caption = 'MAKER'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
             Font.Height = -29
@@ -335,12 +336,12 @@ object FormMain: TFormMain
           ExplicitTop = 64
           ExplicitWidth = 185
           ExplicitHeight = 41
-          object Label3: TLabel
-            Left = 320
-            Top = 24
-            Width = 92
+          object lb_Player: TLabel
+            Left = 312
+            Top = 16
+            Width = 114
             Height = 35
-            Caption = 'Player'
+            Caption = 'PLAYER'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
             Font.Height = -29
@@ -371,7 +372,7 @@ object FormMain: TFormMain
           ExplicitTop = 72
           ExplicitWidth = 185
           ExplicitHeight = 41
-          object Label2: TLabel
+          object lb_Solver: TLabel
             Left = 312
             Top = 16
             Width = 92

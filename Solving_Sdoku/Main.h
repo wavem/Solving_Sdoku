@@ -106,15 +106,15 @@ __published:	// IDE-managed Components
 	TPanel *__pnBase_Page_4_Solver;
 	TcxMemo *memo;
 	TAdvStringGrid *grid;
-	TShape *Shape1;
-	TShape *Shape2;
-	TShape *Shape3;
-	TShape *Shape4;
+	TShape *Shape_Tester_1;
+	TShape *Shape_Tester_2;
+	TShape *Shape_Tester_3;
+	TShape *Shape_Tester_4;
 	TLabel *lb_Welcome;
-	TLabel *Label1;
-	TLabel *Label2;
+	TLabel *lb_Maker;
+	TLabel *lb_Solver;
 	TPanel *__pnBase_Page_3_Player;
-	TLabel *Label3;
+	TLabel *lb_Player;
 	void __fastcall MenuBtn_1Click(TObject *Sender);
 	void __fastcall gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign);
