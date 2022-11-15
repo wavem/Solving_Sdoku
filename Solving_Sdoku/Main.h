@@ -87,7 +87,7 @@ __published:	// IDE-managed Components
 	TdxRibbon *MainRibbonMenu;
 	TdxBarManager *BarMgr;
 	TdxBar *BarMgrBar1;
-	TdxBarLargeButton *MenuBtn_1;
+	TdxBarLargeButton *MenuBtn_Test;
 	TdxBarLargeButton *MenuBtn_Version;
 	TdxBarLargeButton *dxBarLargeButton1;
 	TdxBarLargeButton *dxBarLargeButton2;
@@ -115,7 +115,7 @@ __published:	// IDE-managed Components
 	TLabel *lb_Solver;
 	TPanel *__pnBase_Page_3_Player;
 	TLabel *lb_Player;
-	void __fastcall MenuBtn_1Click(TObject *Sender);
+	void __fastcall MenuBtn_TestClick(TObject *Sender);
 	void __fastcall gridGetAlignment(TObject *Sender, int ARow, int ACol, TAlignment &HAlign,
           TVAlignment &VAlign);
 	void __fastcall MenuBtn_VersionClick(TObject *Sender);
@@ -137,6 +137,9 @@ public: // GAME
     bool __fastcall Check();
     void __fastcall Show();
     int m_CheckCount;
+
+public: // MAKER
+	bool __fastcall Making();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TFormMain *FormMain;

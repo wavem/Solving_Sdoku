@@ -7,6 +7,7 @@
 #define PROGRAM_UPDATEDATE		L"Last Update : 2022-11-14 PM 15:48"
 
 
+#define DF_TRY_COUNT	50
 
 
 

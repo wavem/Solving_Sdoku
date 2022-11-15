@@ -59,7 +59,7 @@ object FormMain: TFormMain
       Width = 751
       Height = 436
       Align = alClient
-      PageIndex = 4
+      PageIndex = 1
       TabOrder = 0
       ExplicitLeft = 40
       ExplicitTop = 32
@@ -454,7 +454,7 @@ object FormMain: TFormMain
       ItemLinks = <
         item
           Visible = True
-          ItemName = 'MenuBtn_1'
+          ItemName = 'MenuBtn_Test'
         end
         item
           Visible = True
@@ -466,12 +466,12 @@ object FormMain: TFormMain
       Visible = True
       WholeRow = False
     end
-    object MenuBtn_1: TdxBarLargeButton
+    object MenuBtn_Test: TdxBarLargeButton
       Caption = 'Test'
       Category = 0
       Hint = 'Test'
       Visible = ivAlways
-      OnClick = MenuBtn_1Click
+      OnClick = MenuBtn_TestClick
       HotGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000

@@ -118,19 +118,35 @@ void __fastcall TFormMain::gridGetAlignment(TObject *Sender, int ARow, int ACol,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
+void __fastcall TFormMain::MenuBtn_TestClick(TObject *Sender)
 {
+	Making();
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::Making() {
+
+	// Print Start Message
+	PrintMsg(L"Making Start");
+
 	// Common
     UnicodeString tempStr = L"";
-    PrintMsg(L"START");
+    DWORD t_StartTime = 0;
+    DWORD t_EndTime = 0;
+    int t_TryCount = 0;
 
+
+    // Default Setting
 	m_CurrentIdx = 0;
     m_CheckCount = 0;
     memset(m_MainBoard, 0, sizeof(m_MainBoard));
 
+    // Get Start Time
+	t_StartTime = GetTickCount();
+
     while(m_CurrentIdx < 81) {
-    	if(m_CheckCount > 50) {
-        	tempStr.sprintf(L"Try Count : %d", m_CheckCount);
+    	if(m_CheckCount > DF_TRY_COUNT) {
+        	tempStr.sprintf(L"Retry... (Try Count : %d)", t_TryCount++);
         	PrintMsg(tempStr);
 
             // Restart Routine
@@ -145,7 +161,13 @@ void __fastcall TFormMain::MenuBtn_1Click(TObject *Sender)
     }
 
     Show();
-    PrintMsg(L"Complete");
+
+    // Get Finish Time
+	t_EndTime = GetTickCount();
+
+    // Display Result Message
+    tempStr.sprintf(L"Complete (%.4f sec)", ((double)t_EndTime - t_StartTime) / 1000);
+    PrintMsg(tempStr);
 }
 //---------------------------------------------------------------------------
 
