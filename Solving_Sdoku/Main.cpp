@@ -133,8 +133,7 @@ bool __fastcall TFormMain::Making() {
     UnicodeString tempStr = L"";
     DWORD t_StartTime = 0;
     DWORD t_EndTime = 0;
-    int t_TryCount = 0;
-
+    int t_RetryCount = 0;
 
     // Default Setting
 	m_CurrentIdx = 0;
@@ -146,7 +145,7 @@ bool __fastcall TFormMain::Making() {
 
     while(m_CurrentIdx < 81) {
     	if(m_CheckCount > DF_TRY_COUNT) {
-        	tempStr.sprintf(L"Retry... (Try Count : %d)", t_TryCount++);
+        	tempStr.sprintf(L"Retry... (Try Count : %d)", t_RetryCount++);
         	PrintMsg(tempStr);
 
             // Restart Routine
