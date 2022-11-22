@@ -131,6 +131,10 @@ public: // START
 	void __fastcall InitProgram();
     void __fastcall PrintMsg(UnicodeString _str);
 
+public: // Libxl
+	libxl::Book* m_Book;
+    bool __fastcall InitConfigExcelFile();
+
 public: // GAME
 	BYTE m_MainBoard[9][9];
     int m_CurrentIdx;

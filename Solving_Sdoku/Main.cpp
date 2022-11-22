@@ -76,6 +76,7 @@
 #pragma link "AdvObj"
 #pragma link "BaseGrid"
 #pragma resource "*.dfm"
+#pragma link "libxl.lib"
 TFormMain *FormMain;
 //---------------------------------------------------------------------------
 __fastcall TFormMain::TFormMain(TComponent* Owner)
@@ -98,15 +99,56 @@ void __fastcall TFormMain::InitProgram() {
     m_CheckCount = 0;
     memset(m_MainBoard, 0, sizeof(m_MainBoard));
 
+	// Init Config
+    InitConfigExcelFile();
+
+
 	for(int i = 0 ; i < grid->RowCount * grid->ColCount ; i++) {
         grid->Cells[i % 9][i / 9] = i + 1;
     }
-	PrintMsg(L"Init Complete");
+	PrintMsg(L"Program Init Complete");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFormMain::PrintMsg(UnicodeString _str) {
 	memo->Lines->Add(_str);
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::InitConfigExcelFile() {
+
+	m_Book = xlCreateXMLBook();
+    if(m_Book) {
+    	m_Book->setKey(L"ÁØÈ£ ¾ç", L"windows-2d20200d03c0ed046aba6867a7n0m2j0");
+        if(m_Book->load(L"Config\\Config.xlsx")) {
+            // Load Real-Time Protocol List & Printout on the Grid
+            //LoadRealTimeProtocolList();
+
+            // Load Real-Time Protocol Map Infomation
+            //if(LoadRTimeProtocolMapInfo()) {
+            //	PrintMsg(L"Success to Open RealTime Map Info");
+            //} else {
+            //    PrintMsg(L"Fail to Open RealTime Map Info");
+            //    return;
+            //}
+
+            // Load Trace Data(Opdata) Protocol
+            //LoadTraceDataProtocol();
+
+            // Load RTime Parsing Info
+            //LoadRTimeParsingInfoFromConfig();
+
+            PrintMsg(L"Load Complete");
+		} else {
+			PrintMsg(L"Fail to Load Excel File");
+		}
+    } else {
+    	PrintMsg(L"Fail to Create XML BOOK");
+        return false;
+    }
+
+	PrintMsg(L"Init Config Complete");
+	return true;
 }
 //---------------------------------------------------------------------------
 
