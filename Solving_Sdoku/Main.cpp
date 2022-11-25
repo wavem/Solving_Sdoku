@@ -5,6 +5,7 @@
 
 #include "Main.h"
 #include "Dlg_Version.h"
+#include "libxl_functions.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "cxClasses"
@@ -181,6 +182,9 @@ bool __fastcall TFormMain::Making() {
 	m_CurrentIdx = 0;
     m_CheckCount = 0;
     memset(m_MainBoard, 0, sizeof(m_MainBoard));
+    memset(m_SolveBoard, 0, sizeof(m_SolveBoard));
+
+
 
     // Get Start Time
 	t_StartTime = GetTickCount();
@@ -316,4 +320,47 @@ void __fastcall TFormMain::MenuBtn_Click(TObject *Sender)
     Notebook_Main->PageIndex = t_Tag;
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TFormMain::MenuBtn_LoadClick(TObject *Sender)
+{
+	LoadSheet();
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::LoadSheet() {
+
+	// Common
+    UnicodeString tempStr = L"";
+    libxl::Sheet* t_Sheet = NULL;
+    int t_RowOffset = 2; // DO NOT MODIFY
+    int t_ColOffset = 2; // DO NOT MODIFY
+
+    // Clear Routine
+    memset(m_SolveBoard, 0, sizeof(m_SolveBoard));
+    grid_Solver->ClearAll();
+
+    // Get Sheet
+    t_Sheet = getSheetByName(m_Book, L"Solver");
+
+    // Read Contents from the Sheet
+    if(t_Sheet) {
+    	for(int i = 0 ; i < 9 ; i++) {
+            for(int j = 0 ; j < 9 ; j++) {
+            	tempStr = getCellValue(t_Sheet, t_RowOffset + i, t_ColOffset + j);
+                grid_Solver->Cells[t_ColOffset + j - 2][t_RowOffset + i - 2] = tempStr;
+                if(tempStr != L"") {
+                	grid_Solver->Colors[t_ColOffset + j - 2][t_RowOffset + i - 2] = clAqua;
+                }
+            }
+        }
+
+    } else {
+        PrintMsg(L"Cannot Load Sheet");
+        return false;
+    }
+
+	return true;
+}
+//---------------------------------------------------------------------------
+
 

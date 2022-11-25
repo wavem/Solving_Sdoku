@@ -129,6 +129,7 @@ __published:	// IDE-managed Components
           TVAlignment &VAlign);
 	void __fastcall MenuBtn_VersionClick(TObject *Sender);
 	void __fastcall MenuBtn_Click(TObject *Sender);
+	void __fastcall MenuBtn_LoadClick(TObject *Sender);
 
 
 private:	// User declarations
@@ -142,6 +143,10 @@ public: // START
 public: // Libxl
 	libxl::Book* m_Book;
     bool __fastcall InitConfigExcelFile();
+    bool __fastcall LoadSheet();
+
+public: // SOLVER
+	BYTE m_SolveBoard[9][9];
 
 public: // GAME
 	BYTE m_MainBoard[9][9];
