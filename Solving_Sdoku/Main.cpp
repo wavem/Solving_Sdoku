@@ -334,6 +334,7 @@ bool __fastcall TFormMain::LoadSheet() {
     libxl::Sheet* t_Sheet = NULL;
     int t_RowOffset = 2; // DO NOT MODIFY
     int t_ColOffset = 2; // DO NOT MODIFY
+    int t_MemIdx = 0;
 
     // Clear Routine
     memset(m_SolveBoard, 0, sizeof(m_SolveBoard));
@@ -353,11 +354,40 @@ bool __fastcall TFormMain::LoadSheet() {
                 }
             }
         }
-
     } else {
         PrintMsg(L"Cannot Load Sheet");
         return false;
     }
+
+    // Load On Memory
+    for(int row = 0 ; row < 9 ; row++) {
+        for(int col = 0 ; col < 9 ; col++) {
+        	tempStr = grid_Solver->Cells[col][row];
+            if(tempStr == L"") {
+            	*(m_SolveBoard[0] + t_MemIdx) = 0;
+            } else {
+            	*(m_SolveBoard[0] + t_MemIdx) = StrToInt(tempStr);
+            }
+            t_MemIdx++;
+        }
+    }
+
+    // Print Test
+    for(int row = 0 ; row < 9 ; row++) {
+        tempStr.sprintf(L"%02d %02d %02d  |  %02d %02d %02d  |  %02d %02d %02d",
+                        m_SolveBoard[row][0],
+                        m_SolveBoard[row][1],
+                        m_SolveBoard[row][2],
+                        m_SolveBoard[row][3],
+                        m_SolveBoard[row][4],
+                        m_SolveBoard[row][5],
+                        m_SolveBoard[row][6],
+                        m_SolveBoard[row][7],
+                        m_SolveBoard[row][8]);
+        PrintMsg(tempStr);
+    }
+
+    PrintMsg(L"Load Sheet Complete");
 
 	return true;
 }
