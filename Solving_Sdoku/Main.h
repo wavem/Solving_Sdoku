@@ -130,6 +130,7 @@ __published:	// IDE-managed Components
 	void __fastcall MenuBtn_VersionClick(TObject *Sender);
 	void __fastcall MenuBtn_Click(TObject *Sender);
 	void __fastcall MenuBtn_LoadClick(TObject *Sender);
+	void __fastcall MenuBtn_SolveClick(TObject *Sender);
 
 
 private:	// User declarations
@@ -147,6 +148,10 @@ public: // Libxl
 
 public: // SOLVER
 	BYTE m_SolveBoard[9][9];
+    BYTE m_SolveBuffer[9][9];
+    bool __fastcall Solve();
+    bool __fastcall SolveInput(int _Idx);
+    bool __fastcall SolveCheck();
 
 public: // GAME
 	BYTE m_MainBoard[9][9];

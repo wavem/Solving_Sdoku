@@ -1497,6 +1497,7 @@ object FormMain: TFormMain
       Category = 0
       Hint = 'Solve'
       Visible = ivAlways
+      OnClick = MenuBtn_SolveClick
       HotGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000

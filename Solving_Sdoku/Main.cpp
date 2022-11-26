@@ -99,6 +99,8 @@ void __fastcall TFormMain::InitProgram() {
     m_CurrentIdx = 0;
     m_CheckCount = 0;
     memset(m_MainBoard, 0, sizeof(m_MainBoard));
+    memset(m_SolveBoard, 0, sizeof(m_SolveBoard));
+    memset(m_SolveBuffer, 0, sizeof(m_SolveBuffer));
 
 	// Init Config
     InitConfigExcelFile();
@@ -182,9 +184,6 @@ bool __fastcall TFormMain::Making() {
 	m_CurrentIdx = 0;
     m_CheckCount = 0;
     memset(m_MainBoard, 0, sizeof(m_MainBoard));
-    memset(m_SolveBoard, 0, sizeof(m_SolveBoard));
-
-
 
     // Get Start Time
 	t_StartTime = GetTickCount();
@@ -218,6 +217,7 @@ bool __fastcall TFormMain::Making() {
 
 bool __fastcall TFormMain::Input(int _Idx) {
     *(m_MainBoard[0] + _Idx) = rand() % 9 + 1;
+    //*(_pMemIdx + _Idx) = rand() % 9 + 1;
     return Check();
 }
 //---------------------------------------------------------------------------
@@ -299,8 +299,15 @@ bool __fastcall TFormMain::Check() {
 //---------------------------------------------------------------------------
 
 void __fastcall TFormMain::Show() {
+
+	// Test Board
 	for(int i = 0 ; i < 9 * 9 ; i++) {
     	grid->Cells[i % 9][i / 9] = *(m_MainBoard[0] + i);
+    }
+
+    // Solve Board
+    for(int i = 0 ; i < 9 * 9 ; i++) {
+    	grid_Solver->Cells[i % 9][i / 9] = *(m_SolveBoard[0] + i);
     }
 }
 //---------------------------------------------------------------------------
@@ -359,7 +366,7 @@ bool __fastcall TFormMain::LoadSheet() {
         return false;
     }
 
-    // Load On Memory
+    // Load into Memory
     for(int row = 0 ; row < 9 ; row++) {
         for(int col = 0 ; col < 9 ; col++) {
         	tempStr = grid_Solver->Cells[col][row];
@@ -390,6 +397,148 @@ bool __fastcall TFormMain::LoadSheet() {
     PrintMsg(L"Load Sheet Complete");
 
 	return true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::MenuBtn_SolveClick(TObject *Sender)
+{
+	Solve();
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::Solve() {
+
+	// Print Start Message
+	PrintMsg(L"Solving Start");
+
+	// Common
+    UnicodeString tempStr = L"";
+    DWORD t_StartTime = 0;
+    DWORD t_EndTime = 0;
+    int t_RetryCount = 0;
+
+    // Default Setting
+	m_CurrentIdx = 0;
+    m_CheckCount = 0;
+    memset(m_SolveBuffer, 0, sizeof(m_SolveBuffer));
+    memcpy(m_SolveBuffer, m_SolveBoard, 81);
+
+    // Get Start Time
+	t_StartTime = GetTickCount();
+
+    // Solving Routine
+    while(m_CurrentIdx < 81) {
+    	if(m_CheckCount > DF_TRY_COUNT) {
+        	tempStr.sprintf(L"Retry... (Try Count : %d)", t_RetryCount++);
+        	PrintMsg(tempStr);
+
+            // Restart Routine
+            m_CurrentIdx = 0;
+            m_CheckCount = 0;
+            memset(m_SolveBuffer, 0, sizeof(m_SolveBuffer));
+            memcpy(m_SolveBuffer, m_SolveBoard, 81);
+        }
+    	if(SolveInput(m_CurrentIdx)) {
+            m_CurrentIdx++;
+            m_CheckCount = 0;
+        } else {
+         	*(m_SolveBuffer[0] + m_CurrentIdx) = 0;
+        }
+    }
+
+    Show();
+
+    // Get Finish Time
+	t_EndTime = GetTickCount();
+
+    // Display Result Message
+    tempStr.sprintf(L"Complete (%.4f sec)", ((double)t_EndTime - t_StartTime) / 1000);
+    PrintMsg(tempStr);
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::SolveInput(int _Idx) {
+	if(*(m_SolveBuffer[0] + _Idx) != 0) {
+    	return true;
+    }
+	*(m_SolveBuffer[0] + _Idx) = rand() % 9 + 1;
+    return SolveCheck();
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::SolveCheck() {
+
+	// Common
+    UnicodeString tempStr = L"";
+
+    // Increase Check Count
+    m_CheckCount++;
+
+	//// Square Check
+    // Get Start Index
+    int t_RowOffset = 0;
+    int t_ColOffset = 0;
+
+    t_RowOffset = (m_CurrentIdx / 9) / 3;
+    t_ColOffset = (m_CurrentIdx % 9) / 3;
+
+    BYTE t_SquareBuffer[9] = {0, };
+
+    t_SquareBuffer[0] = m_SolveBuffer[t_RowOffset * 3 + 0][t_ColOffset * 3 + 0];
+    t_SquareBuffer[1] = m_SolveBuffer[t_RowOffset * 3 + 0][t_ColOffset * 3 + 1];
+    t_SquareBuffer[2] = m_SolveBuffer[t_RowOffset * 3 + 0][t_ColOffset * 3 + 2];
+    t_SquareBuffer[3] = m_SolveBuffer[t_RowOffset * 3 + 1][t_ColOffset * 3 + 0];
+    t_SquareBuffer[4] = m_SolveBuffer[t_RowOffset * 3 + 1][t_ColOffset * 3 + 1];
+    t_SquareBuffer[5] = m_SolveBuffer[t_RowOffset * 3 + 1][t_ColOffset * 3 + 2];
+    t_SquareBuffer[6] = m_SolveBuffer[t_RowOffset * 3 + 2][t_ColOffset * 3 + 0];
+    t_SquareBuffer[7] = m_SolveBuffer[t_RowOffset * 3 + 2][t_ColOffset * 3 + 1];
+    t_SquareBuffer[8] = m_SolveBuffer[t_RowOffset * 3 + 2][t_ColOffset * 3 + 2];
+
+    for(int i = 0 ; i < 9 ; i++) {
+        for(int j = 0 ; j < 9 ; j++) {
+        	if(i == j) continue;
+            if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) {
+            	return false;
+            }
+        }
+    }
+
+    //// Horizontal Line Check
+    memcpy(t_SquareBuffer, &(m_SolveBuffer[m_CurrentIdx / 9][0]), 9);
+    for(int i = 0 ; i < 9 ; i++) {
+    	for(int j = 0 ; j < 9 ; j++) {
+        	if(i == j) continue;
+            if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) {
+            	return false;
+            }
+        }
+    }
+
+    //// Vertical Line Check
+    t_SquareBuffer[0] = m_SolveBuffer[0][m_CurrentIdx % 9];
+    t_SquareBuffer[1] = m_SolveBuffer[1][m_CurrentIdx % 9];
+    t_SquareBuffer[2] = m_SolveBuffer[2][m_CurrentIdx % 9];
+    t_SquareBuffer[3] = m_SolveBuffer[3][m_CurrentIdx % 9];
+    t_SquareBuffer[4] = m_SolveBuffer[4][m_CurrentIdx % 9];
+    t_SquareBuffer[5] = m_SolveBuffer[5][m_CurrentIdx % 9];
+    t_SquareBuffer[6] = m_SolveBuffer[6][m_CurrentIdx % 9];
+    t_SquareBuffer[7] = m_SolveBuffer[7][m_CurrentIdx % 9];
+    t_SquareBuffer[8] = m_SolveBuffer[8][m_CurrentIdx % 9];
+
+    for(int i = 0 ; i < 9 ; i++) {
+    	for(int j = 0 ; j < 9 ; j++) {
+        	if(i == j) continue;
+            if(t_SquareBuffer[i] == 0 || t_SquareBuffer[j] == 0) continue;
+            if(t_SquareBuffer[i] == t_SquareBuffer[j]) {
+            	return false;
+            }
+        }
+    }
+
+    // If All Check Success, Return True.
+    return true;
 }
 //---------------------------------------------------------------------------
 
