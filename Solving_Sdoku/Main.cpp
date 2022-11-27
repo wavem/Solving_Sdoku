@@ -446,6 +446,10 @@ bool __fastcall TFormMain::Solve() {
         }
     }
 
+
+    // Copy Result Memory into m_SolveBoard
+    memcpy(m_SolveBoard, m_SolveBuffer, 81);
+
     Show();
 
     // Get Finish Time

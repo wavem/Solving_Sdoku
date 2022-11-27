@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------
 
 #define PROGRAM_VERSION			L"Ver 0.0.1"
-#define PROGRAM_UPDATEDATE		L"Last Update : 2022-11-25 PM 18:41"
+#define PROGRAM_UPDATEDATE		L"Last Update : 2022-11-27 PM 17:23"
 
 
 #define DF_TRY_COUNT	50
