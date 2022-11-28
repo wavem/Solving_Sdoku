@@ -429,8 +429,21 @@ bool __fastcall TFormMain::Solve() {
     // Solving Routine
     while(m_CurrentIdx < 81) {
     	if(m_CheckCount > DF_TRY_COUNT) {
-        	tempStr.sprintf(L"Retry... (Try Count : %d)", t_RetryCount++);
+        	tempStr.sprintf(L"Retry... (Try : %d, Idx : %d)", t_RetryCount++, m_CurrentIdx);
         	PrintMsg(tempStr);
+
+            //if(t_RetryCount > 100) {
+                //memo->Lines->Clear();
+            //}
+
+            if(m_CurrentIdx > 50) {
+                int tt = 30;
+            }
+
+            if(m_CurrentIdx > 60) {
+                int rr = 40;
+            }
+
 
             // Restart Routine
             m_CurrentIdx = 0;
