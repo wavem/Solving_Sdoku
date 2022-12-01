@@ -151,7 +151,12 @@ public: // SOLVER
     BYTE m_SolveBuffer[9][9];
     bool __fastcall Solve();
     bool __fastcall SolveInput(int _Idx);
-    bool __fastcall SolveCheck();
+    bool __fastcall SolveCheck(int _Idx);
+
+public: // Recursive Solve
+	bool __fastcall Solve_Recursive();
+    bool __fastcall Recursive_Input(int _Idx);
+    bool m_OriginValueIdx[81];
 
 public: // GAME
 	BYTE m_MainBoard[9][9];

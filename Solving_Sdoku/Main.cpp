@@ -402,7 +402,8 @@ bool __fastcall TFormMain::LoadSheet() {
 
 void __fastcall TFormMain::MenuBtn_SolveClick(TObject *Sender)
 {
-	Solve();
+	//Solve();
+	Solve_Recursive();
 }
 //---------------------------------------------------------------------------
 
@@ -416,6 +417,8 @@ bool __fastcall TFormMain::Solve() {
     DWORD t_StartTime = 0;
     DWORD t_EndTime = 0;
     int t_RetryCount = 0;
+    __int64 t_Statistic[9] = {0, };
+    int t_TargetValue = 0;
 
     // Default Setting
 	m_CurrentIdx = 0;
@@ -432,12 +435,18 @@ bool __fastcall TFormMain::Solve() {
         	if(t_RetryCount % 50000 == 0) {
             	tempStr.sprintf(L"Retry... (Try : %d, Idx : %d)", t_RetryCount, m_CurrentIdx);
         		PrintMsg(tempStr);
+
+                // Statistics Print Out
+                for(int i = 0 ; i < 9 ; i++) {
+                    tempStr.sprintf(L"%d : %d", i + 1, t_Statistic[i]);
+                    PrintMsg(tempStr);
+                }
             }
             t_RetryCount++;
 
-            if(m_CurrentIdx > 60) {
-                int rr = 40;
-            }
+            // For Statistics
+            t_TargetValue = m_SolveBuffer[0][0];
+            t_Statistic[t_TargetValue - 1]++;
 
             // Restart Routine
             m_CurrentIdx = 0;
@@ -473,11 +482,12 @@ bool __fastcall TFormMain::SolveInput(int _Idx) {
     	return true;
     }
 	*(m_SolveBuffer[0] + _Idx) = rand() % 9 + 1;
-    return SolveCheck();
+    //return SolveCheck();
+    return true;
 }
 //---------------------------------------------------------------------------
 
-bool __fastcall TFormMain::SolveCheck() {
+bool __fastcall TFormMain::SolveCheck(int _Idx) {
 
 	// Common
     UnicodeString tempStr = L"";
@@ -490,8 +500,8 @@ bool __fastcall TFormMain::SolveCheck() {
     int t_RowOffset = 0;
     int t_ColOffset = 0;
 
-    t_RowOffset = (m_CurrentIdx / 9) / 3;
-    t_ColOffset = (m_CurrentIdx % 9) / 3;
+    t_RowOffset = (_Idx / 9) / 3;
+    t_ColOffset = (_Idx % 9) / 3;
 
     BYTE t_SquareBuffer[9] = {0, };
 
@@ -516,7 +526,7 @@ bool __fastcall TFormMain::SolveCheck() {
     }
 
     //// Horizontal Line Check
-    memcpy(t_SquareBuffer, &(m_SolveBuffer[m_CurrentIdx / 9][0]), 9);
+    memcpy(t_SquareBuffer, &(m_SolveBuffer[_Idx / 9][0]), 9);
     for(int i = 0 ; i < 9 ; i++) {
     	for(int j = 0 ; j < 9 ; j++) {
         	if(i == j) continue;
@@ -528,15 +538,15 @@ bool __fastcall TFormMain::SolveCheck() {
     }
 
     //// Vertical Line Check
-    t_SquareBuffer[0] = m_SolveBuffer[0][m_CurrentIdx % 9];
-    t_SquareBuffer[1] = m_SolveBuffer[1][m_CurrentIdx % 9];
-    t_SquareBuffer[2] = m_SolveBuffer[2][m_CurrentIdx % 9];
-    t_SquareBuffer[3] = m_SolveBuffer[3][m_CurrentIdx % 9];
-    t_SquareBuffer[4] = m_SolveBuffer[4][m_CurrentIdx % 9];
-    t_SquareBuffer[5] = m_SolveBuffer[5][m_CurrentIdx % 9];
-    t_SquareBuffer[6] = m_SolveBuffer[6][m_CurrentIdx % 9];
-    t_SquareBuffer[7] = m_SolveBuffer[7][m_CurrentIdx % 9];
-    t_SquareBuffer[8] = m_SolveBuffer[8][m_CurrentIdx % 9];
+    t_SquareBuffer[0] = m_SolveBuffer[0][_Idx % 9];
+    t_SquareBuffer[1] = m_SolveBuffer[1][_Idx % 9];
+    t_SquareBuffer[2] = m_SolveBuffer[2][_Idx % 9];
+    t_SquareBuffer[3] = m_SolveBuffer[3][_Idx % 9];
+    t_SquareBuffer[4] = m_SolveBuffer[4][_Idx % 9];
+    t_SquareBuffer[5] = m_SolveBuffer[5][_Idx % 9];
+    t_SquareBuffer[6] = m_SolveBuffer[6][_Idx % 9];
+    t_SquareBuffer[7] = m_SolveBuffer[7][_Idx % 9];
+    t_SquareBuffer[8] = m_SolveBuffer[8][_Idx % 9];
 
     for(int i = 0 ; i < 9 ; i++) {
     	for(int j = 0 ; j < 9 ; j++) {
@@ -552,5 +562,99 @@ bool __fastcall TFormMain::SolveCheck() {
     return true;
 }
 //---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::Solve_Recursive() {
+
+	// Common
+    UnicodeString tempStr = L"";
+
+	// Default Setting
+	m_CurrentIdx = 0;
+    m_CheckCount = 0;
+    memset(m_SolveBuffer, 0, sizeof(m_SolveBuffer));
+    memcpy(m_SolveBuffer, m_SolveBoard, 81);
+
+    if(Recursive_Input(m_CurrentIdx)) {
+        PrintMsg(L"Success");
+    } else {
+    	PrintMsg(L"Fail");
+    }
+
+    memcpy(m_SolveBoard, m_SolveBuffer, 81);
+
+    tempStr.sprintf(L"Call Count : %d", m_CheckCount);
+    PrintMsg(tempStr);
+    Show();
+    return true;
+}
+//---------------------------------------------------------------------------
+
+bool __fastcall TFormMain::Recursive_Input(int _Idx) {
+
+	//m_CurrentIdx = _Idx;
+
+	// Common
+    UnicodeString tempStr = L"";
+
+	// Print Call Counting
+    if(m_CheckCount++ % 500 == 0) {
+    	tempStr.sprintf(L"Check Count : %d, Idx : %d", m_CheckCount, _Idx);
+    	PrintMsg(tempStr);
+    }
+
+	// Pre Return
+    if(_Idx == 81) {
+    	//if(SolveCheck(_Idx)) {
+            return true;
+        //}
+    }
+
+	BYTE t_OriginValue = *(m_SolveBoard[0] + _Idx);
+    if(t_OriginValue != 0) {
+    	return Recursive_Input(++_Idx);
+    }
+
+    for(int i = 1 ; i < 10 ; i++) {
+    	*(m_SolveBuffer[0] + _Idx) = i;
+        if(SolveCheck(_Idx)) {
+        	if(Recursive_Input(++_Idx)) {
+            	return true;
+            }
+        }
+        *(m_SolveBuffer[0] + _Idx) = 0;
+    }
+
+    return false;
+
+#if 0
+	// Final Return ? (Not Pre Return)
+    if(m_CurrentIdx == 81) return true;
+
+    // Print Call Counting
+    m_CheckCount++;
+    if(m_CheckCount % 10000 == 0) PrintMsg(m_CheckCount);
+
+    // Check Whether Current Value is Origin Value
+    BYTE t_OriginValue = *(m_SolveBoard[0] + m_CurrentIdx);
+    if(t_OriginValue != 0) {
+        return Recursive_Input(++m_CurrentIdx);
+    }
+
+    for(int i = 1 ; i < 10 ; i++) {
+    	*(m_SolveBuffer[0] + m_CurrentIdx) = i;
+        if(SolveCheck()) {
+            Recursive_Input(++m_CurrentIdx);
+        } else {
+        	*(m_SolveBuffer[0] + m_CurrentIdx) = 0;
+        }
+    }
+
+    *(m_SolveBuffer[0] + m_CurrentIdx - 1) = 0;
+    return Recursive_Input(--m_CurrentIdx);
+
+#endif
+}
+//---------------------------------------------------------------------------
+
 
 

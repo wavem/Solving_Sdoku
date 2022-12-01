@@ -49,10 +49,6 @@ object FormMain: TFormMain
     Color = 2500134
     ParentBackground = False
     TabOrder = 5
-    ExplicitLeft = 8
-    ExplicitTop = 137
-    ExplicitWidth = 585
-    ExplicitHeight = 281
     object Notebook_Main: TNotebook
       Left = 0
       Top = 0
@@ -61,7 +57,6 @@ object FormMain: TFormMain
       Align = alLeft
       PageIndex = 4
       TabOrder = 0
-      ExplicitHeight = 436
       object TPage
         Left = 0
         Top = 0
@@ -356,8 +351,6 @@ object FormMain: TFormMain
         Top = 0
         HelpContext = 4
         Caption = 'Solver'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object __pnBase_Page_4_Solver: TPanel
           Left = 0
           Top = 0
@@ -368,10 +361,6 @@ object FormMain: TFormMain
           Color = 2500134
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 32
-          ExplicitTop = 72
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object lb_Solver: TLabel
             Left = 176
             Top = 16
@@ -540,7 +529,6 @@ object FormMain: TFormMain
       Top = 0
       Align = alRight
       TabOrder = 1
-      ExplicitHeight = 436
       Height = 495
       Width = 279
     end
@@ -592,8 +580,8 @@ object FormMain: TFormMain
           Visible = True
           ItemName = 'MenuBtn_Solver'
         end>
-      OneOnRow = True
-      Row = 1
+      OneOnRow = False
+      Row = 0
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -624,7 +612,7 @@ object FormMain: TFormMain
           Visible = True
           ItemName = 'MenuBtn_Version'
         end>
-      OneOnRow = True
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True
